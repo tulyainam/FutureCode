@@ -1,12 +1,14 @@
 import { View, Text, TouchableOpacity, ScrollView, Image, StyleSheet, Dimensions} from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import LoginInput from '../../components/inputs/LoginInput'
 import LoginButton from '../../components/buttons/LoginButton'
 import LoginImage from '../../components/ui/LoginImage'
+import LoginModal from '../../components/modal/LoginModal'
 
 const windowWidth = Dimensions.get('window').width;
 
 const Login = () => {
+  const [isForgetModalVisible, setIsForgetModalVisible] = useState(false);
   return (
     <View>
       <LoginImage>
@@ -20,12 +22,14 @@ const Login = () => {
         <ScrollView style={{paddingVertical:30}}>
           <Text style={[styles.TxtLogin, styles.TxtMarginBottom]}>Alışverişe başlamak için giriş yapınız.</Text>
           <LoginInput placeholder={"E-posta *"} keyboardType={"email-address"}/>
-          <LoginInput placeholder={"Şifre *"} >
+          <LoginInput placeholder={"Şifre *"} secureTextEntry={true}>
             <TouchableOpacity>
               <Text>asad</Text>
             </TouchableOpacity>
           </LoginInput>
-          <Text style={[styles.TxtLogin, styles.TxtMarginBottom]}>Şifremi Unuttum</Text>
+          <TouchableOpacity onPress={()=> setIsForgetModalVisible(true)}>
+            <Text style={[styles.TxtLogin, styles.TxtMarginBottom]}>Şifremi Unuttum</Text>
+          </TouchableOpacity>
           <LoginButton>Giriş Yap</LoginButton>
           <View style={[styles.TxtMarginBottom, {flexDirection:'row', justifyContent:'space-between', alignItems:'center'}]}>
             <View style={styles.Line}></View>
@@ -35,6 +39,19 @@ const Login = () => {
           <LoginButton>Kayıt Ol</LoginButton>
         </ScrollView>
       </View>
+      <LoginModal isVisible={isForgetModalVisible}>
+        <View style={{justifyContent:'center', alignItems:'center'}}>
+          <Text style={[styles.ModalTxtFont, styles.ModalTitle]}>Şifremi Unuttum</Text>
+          <Image source={require('../../assets/icons/forget-password.png')} style={styles.ModalImg}/>
+          <Text style={[styles.ModalTxtFont, styles.ModalTxt]}>Kayıt olurken kullandığınız e-posta adresini giriniz.</Text>
+          <LoginInput placeholder={"E-posta *"} keyboardType={"email-address"}/>
+          <LoginButton onPress={()=>setIsForgetModalVisible(false)}>Gönder</LoginButton>
+        </View>
+        
+        <TouchableOpacity onPress={()=>setIsForgetModalVisible(false)} style={styles.BackBtn}>
+          <Image source={require('../../assets/icons/back-button.png')} style={styles.BackImg}/>
+        </TouchableOpacity>
+      </LoginModal>
     </View>
   )
 }
@@ -75,5 +92,33 @@ const styles = StyleSheet.create({
   },
   TxtMarginBottom:{
     marginBottom:30
+  },
+  BackBtn:{
+    position: 'absolute',
+    top:38,
+    left:17
+  },
+  BackImg:{
+    height: 14,
+    width:27
+  },
+  ModalImg:{
+    height:93,
+    width:144,
+    marginTop:24,
+    marginBottom:42
+  },
+  ModalTxtFont:{
+    fontFamily: 'Roboto-Regular',
+  },
+  ModalTitle:{
+    fontSize: 18,
+    color:'#4F4F4F'
+  },
+  ModalTxt:{
+    fontSize:16,
+    color: '#484C52',
+    textAlign:'center',
+    marginBottom: 38
   }
 })

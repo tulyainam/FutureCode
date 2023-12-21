@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const windowWidth = Dimensions.get("screen").width;
 
-const LoginButton = ({children}) => {
+const LoginButton = ({children, onPress}) => {
   return (
-    <View style={styles.ButtonBox}>
+    <TouchableOpacity style={styles.ButtonBox} onPress={onPress}>
       <Text style={styles.TxtBox}>
         {children}
       </Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
