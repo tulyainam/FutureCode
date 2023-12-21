@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
         alignItems:'center',
         backgroundColor: '#383838',
         borderRadius: 10,
+        marginBottom:30
     },
-    TxtBox: {
-        color:'#fff',
-        lineHeight: 21.6,
-        fontFamily: 'Roboto-Medium'
+    TxtBox: {  
+      color:'#fff',
+      lineHeight: 21.6,
+      fontFamily: 'Roboto-Regular',
+      fontSize: 18
     }
 })

@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  View,
 } from 'react-native';
 import Navigation from './src/navigation/Navigation';
 import Login from './src/pages/login/Login';
@@ -11,15 +12,19 @@ function App(): React.JSX.Element {
   const [login, setLogin] = useState(0);
 
   return (
-    <SafeAreaView >
-      <StatusBar/>
+    <View>
       {login == 0 ? (
-        <Login/>
+        <View>
+          <StatusBar hidden/>
+          <Login/>
+        </View>
       ) : (
-        <Navigation/>
+        <SafeAreaView>
+          <Navigation/>
+        </SafeAreaView>
       )}
       
-    </SafeAreaView>
+    </View>
   );
 }
 
