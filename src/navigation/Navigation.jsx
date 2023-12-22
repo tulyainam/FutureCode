@@ -13,7 +13,9 @@ function Navigation() {
       <Stack.Navigator screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Home" component={Home} options={{
+          title:''
+        }}/>
         <Stack.Screen name="ProductDetail" component={ProductDetail}/>
       </Stack.Navigator>
     )
@@ -33,8 +35,11 @@ function Navigation() {
       <Tab.Screen
         name="ProductList"
         component={HomeStack}
+        options={{
+          title:''
+        }}
       />
-      <Tab.Screen name="Basket" component={Basket} options={{tabBarBadge:9}} />
+      <Tab.Screen name="Basket" component={Basket} options={{tabBarBadge:9,title:''}} />
     </Tab.Navigator>
   )
 }

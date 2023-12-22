@@ -34,7 +34,7 @@ const Home = ({navigation}) => {
   return (
     <View style={{backgroundColor: '#F3F3F3', paddingVertical:verticalScale(20)}}>
       <Search/>
-      <View style={{marginVertical:30, marginHorizontal:horizontalScale(15)}}>
+      <View style={{marginTop:30, marginBottom:130, marginHorizontal:horizontalScale(15)}}>
         <FlatList
           data={dataList.products}
           numColumns={2}
@@ -45,12 +45,13 @@ const Home = ({navigation}) => {
                 <View style={styles.RowBetween}>
                   <Text style={{color:'#34C231', fontSize:moderateScale(12), fontFamily:'Poppins-Regular'}}>Kargo Bedava</Text>
                   <TouchableOpacity>
-                    <Image source={require('../../assets/icons/fav-button.png')} style={styles.FavIcon}/>
+                    <Image source={item.images[0]} style={styles.FavIcon}/>
                   </TouchableOpacity>
                 </View>
-                <View style={[styles.RowCenter,{marginVertical:verticalScale(5)}]}>
                   <Image source={item.images[0]} style={styles.ProductImg}/>
-                </View>
+                 
+                
+               
                 <View style={[styles.RowStart,{marginVertical:verticalScale(10)}]}> 
                   <Image source={require('../../assets/icons/star-yellow.png')} style={styles.StarIcon}/>
                   <Image source={require('../../assets/icons/star-yellow.png')} style={styles.StarIcon}/>
@@ -58,8 +59,8 @@ const Home = ({navigation}) => {
                   <Image source={require('../../assets/icons/star-yellow.png')} style={styles.StarIcon}/>
                   <Image source={require('../../assets/icons/star-gray.png')} style={styles.StarIcon}/>
                 </View>
-                <Text style={[styles.TitleColor, styles.TxtFont]}>{item.title}</Text>
-                <Text style={[styles.SubTitleColor, styles.TxtFont]}>{item.description}</Text>
+                <Text style={[styles.TitleColor, styles.TxtFont]}>{item.title.slice(0,18)}</Text>
+                <Text style={[styles.SubTitleColor, styles.TxtFont]}>{item.description.slice(0,18)}..</Text>
                 <Text style={styles.PriceTxt}>{item.price} TL</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.ProductBoxBtn}>
