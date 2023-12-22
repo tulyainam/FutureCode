@@ -18,7 +18,7 @@ export default TopMenu
 const styles = StyleSheet.create({
     MenuBox:{
         width:'100%',
-        height: verticalScale(50),
+        height: verticalScale(60),
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
